@@ -1,0 +1,38 @@
+class ContaBancaria:
+
+  def __init__ (self, nome,telefone,email,saldo):
+    self.nome= nome
+    self.telefone= telefone
+    self.email= email
+    self.saldo= saldo
+
+  def sacar (self, valor):
+    if valor <=0:
+      print("valor invalido para saque")
+    elif valor > self.saldo:
+      print("saldo insuficiente para realizar o saque")
+    else:
+      self.saldo= self.saldo - valor
+      print(f"o saque de {valor} foi realizado com sucesso, novo saldo de {self.saldo}")
+
+  def depositar(self,valor):
+    if valor <=0:
+      print("valor invalido")
+    else:
+      self.saldo= self.saldo + valor
+      print(f"voce depositou {valor}, novo saldo de {self.saldo}")
+
+  def verificar_saldo(self):
+    return self.saldo
+
+  def __str__ (self):
+    return f"Nome: {self.nome}\nSaldo: {self.saldo}"
+
+
+
+
+conta = ContaBancaria("warp", 123, "warp@gmail.com", 1000 )
+conta.sacar(400)
+conta.depositar(200)
+saldo_atual= conta.verificar_saldo()
+print(conta)
